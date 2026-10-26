@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>Learn With Love</title>
+  <meta name="description" content="Piccoli giochi per imparare, con un unicorno per amico. Gratis, senza pubblicità, senza dati personali." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦄</text></svg>" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Learn With Love" />
+  <meta name="theme-color" content="#1b1446" />
+  <link rel="apple-touch-icon" href="/icon-180.png" />
+  <style>
+    /* La cornice: tutto lo schermo è la pagina dentro (pagina principale o un gioco). */
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #1b1446; }
+    /* Le zone del telefono (tacca, barra in basso) restano fuori: dentro il riquadro non si vedono. */
+    body { box-sizing: border-box; height: 100dvh; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+    #app { display: block; border: 0; width: 100%; height: 100%; }
+  </style>
+  <script type="module" crossorigin src="/assets/main-BDSEc2mi.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/base-CULxe-I3.js">
+  <link rel="modulepreload" crossorigin href="/assets/audio-BC-Bw_0Q.js">
+  <link rel="modulepreload" crossorigin href="/assets/fullscreen-CSntqjPP.js">
+  <link rel="modulepreload" crossorigin href="/assets/gate-YtKbgLXo.js">
+  <link rel="stylesheet" crossorigin href="/assets/base-BV4uEvkl.css">
+</head>
+<body>
+  <!-- La cornice resta aperta per sempre: l'audio (un solo AudioContext, sbloccato una volta)
+       e lo schermo intero vivono qui, mentre dentro si passa da una pagina all'altra. -->
+  <iframe id="app" title="Learn With Love" allow="autoplay; fullscreen"></iframe>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <!-- Le pagine vivono dentro la cornice (index.html), che tiene audio e schermo intero
+       tra una pagina e l'altra: aperte da sole, ci rientrano con lo stesso indirizzo. -->
+  <script>if (window.top === window) location.replace('/?go=' + encodeURIComponent(location.pathname + location.search + location.hash));</script>
+
+  <!-- Una pagina vecchia rimasta nella cache può chiedere file che con l'aggiornamento non ci sono
+       più (pagina senza stile): in quel caso si ricarica una volta da capo. -->
+  <script>addEventListener('error', function (e) { var t = e.target; if (t && (t.tagName === 'LINK' || t.tagName === 'SCRIPT')) { try { if (sessionStorage.getItem('stale') !== location.pathname) { sessionStorage.setItem('stale', location.pathname); location.reload(); } } catch (x) {} } }, true);</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Learn With Love</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦄</text></svg>" />
+  <style>
+    main { max-width: 720px; margin: 0 auto; padding: 32px 16px; text-align: center; }
+    main > svg { filter: drop-shadow(0 0 24px rgba(255, 201, 60, .55)); animation: idle 3.6s ease-in-out infinite; }
+    /* Titolo a lettere d'oro con un riflesso che scorre */
+    h1 {
+      font-size: clamp(2.8rem, 10vw, 4.6rem); margin: 8px 0 0; line-height: 1;
+      background: linear-gradient(100deg, #fff6c7 20%, #ffffff 40%, #ffc93c 50%, #fff6c7 60%) 0 0 / 250% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent !important;
+      filter: drop-shadow(0 4px 0 rgba(0, 0, 0, .25)) drop-shadow(0 0 22px rgba(255, 201, 60, .5));
+      animation: rise .7s both, gold 4s linear infinite;
+    }
+    @keyframes gold { to { background-position: -250% 0; } }
+    p.sub { font-size: 1.25rem; margin: 6px 0 20px; }
+    /* Chi gioca: scelto qui per tutti i giochi */
+    .who { display: inline-flex; align-items: center; gap: 12px; margin: 0 auto 24px; padding: 8px 10px 8px 8px; border-radius: 999px;
+      background: var(--card); color: var(--ink); box-shadow: var(--shadow); font-size: 1.15rem; animation: rise .6s .1s both; }
+    .who:empty { display: none; }
+    .who .big-btn { font-size: 1.5rem; padding: 8px 32px; }
+    .who { flex-wrap: wrap; justify-content: center; max-width: 100%; }
+    .who:has(.big-btn) { background: none; box-shadow: none; padding: 0; }
+    .chooser { position: fixed; inset: 0; z-index: 20; background: rgba(20, 12, 50, .55); display: grid; place-items: center; padding: 16px; }
+    .chooser > div { background: var(--bg); color: var(--ink); border-radius: 32px; padding: 20px 16px; width: min(100%, 560px); max-height: 92dvh; overflow: auto; }
+    .chooser h2 { margin: 0 0 12px; }
+    /* I giochi come icone di app: piccoli, tanti per riga (ne arriveranno altri). */
+    .apps { display: grid; grid-template-columns: repeat(auto-fill, 100px); justify-content: center; gap: 18px 12px; max-width: 560px; margin: 0 auto; }
+    .app { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; color: #fff;
+      transition: transform .2s cubic-bezier(.2, .9, .3, 1.3); }
+    .app svg { width: 76px; height: 76px; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .35)); animation: bob 2.8s ease-in-out infinite; }
+    .app:nth-child(2) svg { animation-delay: -1.3s; }
+    .app:hover, .app:focus-visible { transform: translateY(-4px) scale(1.06); }
+    .app:active { transform: scale(.94); }
+    .app h2 { margin: 0; font-size: 1.05rem; text-shadow: 0 2px 8px rgba(0, 0, 0, .4); }
+    .app span { display: none; }
+    /* Tutto in uno schermo anche sul telefono: unicorno e titolo si adattano all'altezza. */
+    main { padding: clamp(10px, 3dvh, 32px) 16px; }
+    main > svg { width: clamp(70px, 14dvh, 130px); height: auto; }
+    h1 { font-size: clamp(2.2rem, min(10vw, 7dvh), 4.6rem); }
+    p.sub { font-size: clamp(1rem, 2.4dvh, 1.25rem); margin-bottom: clamp(10px, 2.4dvh, 20px); }
+    .who { margin-bottom: clamp(14px, 3dvh, 24px); }
+    /* Pagina a schermo intero, come un gioco: niente scorrimento; il contenuto sta in mezzo. */
+    html, body { height: 100%; overflow: hidden; }
+    body { display: flex; flex-direction: column; height: 100dvh; padding: env(safe-area-inset-top) 0 0; }
+    body > main { flex: 1 1 auto; min-height: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    body.staged .app { background: none !important; box-shadow: none !important; }
+    .apps { width: 100%; }
+    @media (max-width: 480px) {
+      .who { gap: 6px; font-size: 1rem; padding: 6px 8px 6px 6px; flex-wrap: nowrap; }
+      .who svg { width: 40px; height: 40px; }
+      .who .pill-btn { padding: 6px 10px; font-size: .95rem; }
+    }
+    #full-btn { position: fixed; top: max(10px, env(safe-area-inset-top)); right: 10px; z-index: 5; width: 40px; height: 40px; border-radius: 12px;
+      background: rgba(255, 255, 255, .14); color: #fff; font-size: 1.2rem; display: grid; place-items: center; }
+  </style>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Learn With Love" />
+  <meta name="theme-color" content="#1b1446" />
+  <link rel="apple-touch-icon" href="/icon-180.png" />
+  <script type="module" crossorigin src="/assets/home-B9Ij5XWA.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/base-CULxe-I3.js">
+  <link rel="modulepreload" crossorigin href="/assets/fullscreen-CSntqjPP.js">
+  <link rel="modulepreload" crossorigin href="/assets/stage-oW7CzKzk.js">
+  <link rel="modulepreload" crossorigin href="/assets/audio-BC-Bw_0Q.js">
+  <link rel="modulepreload" crossorigin href="/assets/sfx-B6ejPsQP.js">
+  <link rel="modulepreload" crossorigin href="/assets/cloud-ILdEVxrx.js">
+  <link rel="modulepreload" crossorigin href="/assets/profiles-DA6_IBi9.js">
+  <link rel="stylesheet" crossorigin href="/assets/base-BV4uEvkl.css">
+</head>
+<body>
+  <main>
+    <svg viewBox="0 0 120 110" width="130" height="119" aria-hidden="true"><g stroke="#3b2f5c" stroke-width="3" stroke-linejoin="round">
+<path d="M40 36 Q26 26 24 16 Q36 14 50 30 Z" fill="#fff"/>
+<path d="M26 36 Q4 60 18 96 Q30 80 30 66 Q22 88 40 100 Q40 70 46 50 Z" fill="#c9b2ff"/>
+<path d="M30 40 Q14 64 26 90 Q36 70 42 56 Z" fill="#ffb3c7"/>
+<path d="M80 36 Q94 26 96 16 Q84 14 70 30 Z" fill="#fff"/>
+<ellipse cx="62" cy="62" rx="36" ry="36" fill="#fff"/>
+<path d="M52 30 L60 1 L68 30 Z" fill="#ffd56b"/>
+<path d="M30 40 Q44 18 70 30 Q58 34 50 46 Q44 38 30 40 Z" fill="#9fd3ff"/>
+</g>
+<path d="M82 31 Q90 25 91 20 Q84 20 77 28 Z" fill="#ffb3c7"/><path d="M38 31 Q30 25 29 20 Q36 20 43 28 Z" fill="#ffb3c7"/>
+<path d="M55.5 21 L65.5 18 M57.5 12 L63 10.5" stroke="#e0a92a" stroke-width="2.5" stroke-linecap="round"/>
+<g transform="translate(2 0)">
+        <g class="eyes-open"><ellipse cx="45" cy="58" rx="7" ry="8.5" fill="#3b2f5c"/><ellipse cx="75" cy="58" rx="7" ry="8.5" fill="#3b2f5c"/>
+<circle cx="47.5" cy="54.5" r="2.8" fill="#fff"/><circle cx="77.5" cy="54.5" r="2.8" fill="#fff"/></g>
+        
+        
+        <ellipse cx="60" cy="83" rx="15" ry="10" fill="#ffe0ea"/><path d="M53 87 q7 6 14 0" stroke="#3b2f5c" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="31" cy="72" r="5.5" fill="#ff8fa3" opacity=".55"/><circle cx="89" cy="72" r="5.5" fill="#ff8fa3" opacity=".55"/>
+      </g>
+<path d="M98 76 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#ffd56b"/></svg>
+    <h1>Learn With Love</h1>
+    <p class="sub">Giochi per imparare, semplici e divertenti</p>
+    <div id="who" class="who"></div>
+    <div class="apps">
+      <a class="app" href="/tabelline/" data-page="tabelline/">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="8" y="8" width="84" height="84" rx="22" fill="#ffc93c" />
+          <text x="50" y="66" text-anchor="middle" font-size="44" font-weight="800" fill="#3b2f5c" font-family="Baloo 2, sans-serif">3×4</text>
+        </svg>
+        <h2>Tabelline</h2>
+        <span>Terza elementare</span>
+      </a>
+      <a class="app" href="/arena/" data-page="arena/">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="8" y="8" width="84" height="84" rx="22" fill="#ff8fa3" />
+          <text x="50" y="66" text-anchor="middle" font-size="44">⚔️</text>
+        </svg>
+        <h2>Arene</h2>
+        <span>Sfide a tempo con gli amici</span>
+      </a>
+    </div>
+  </main>
+  <button id="full-btn" aria-label="Schermo intero sì/no" hidden>⛶</button>
+  <section id="chooser" class="chooser" hidden><div><h2 id="chooser-title">Chi gioca?</h2><div id="profiles"></div></div></section>
+  <!-- Una sola home: anche l'indirizzo dell'organizzazione porta qui. In fondo i riconoscimenti. -->
+  <footer class="credits-bar">
+    <span>© 2026 make become</span>
+    <span class="credits">Made with <span class="heart" aria-label="love">❤️</span> by
+      <a target="_blank" rel="noopener" href="https://make-become.github.io/"><img src="/logos/make-become.svg" alt="make become, an artware studio"></a>
+      with <a class="naima" target="_blank" rel="noopener" href="https://naima-project.github.io/naima/">Naima</a></span>
+  </footer>
+  <style>
+    .credits-bar { flex: none; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 720px; margin: 0 auto;
+      padding: 10px 16px 18px; color: #d9ccff; font-size: .95rem; }
+    .credits-bar a { color: inherit; }
+    @media (max-width: 560px) {
+      .credits-bar { flex-direction: column-reverse; gap: 6px; padding: 6px 12px max(10px, env(safe-area-inset-bottom)); font-size: .8rem; }
+      .credits-bar .credits { justify-content: center; }
+      .credits-bar .credits img { height: 22px; transform: translateY(4px); }
+    }
+    .credits-bar .credits { display: flex; align-items: center; gap: 14px; }
+    .credits-bar img { height: 24px; display: block; filter: brightness(0) invert(1); opacity: .85; }
+    .credits-bar .credits { gap: 6px; flex-wrap: wrap; justify-content: flex-end; line-height: 1; }
+    /* Il logo ha il sottotitolo sotto: lo si abbassa perché la scritta grande stia sulla riga del testo. */
+    .credits-bar .credits img { height: 30px; transform: translateY(5px); }
+    .credits-bar .heart { font-size: .9em; }
+    .credits-bar .naima { text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
+    .credits-bar .heart { display: inline-block; animation: beat 1.2s ease-in-out infinite; }
+  </style>
+</body>
+</html>

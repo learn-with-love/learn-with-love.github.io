@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <!-- Le pagine vivono dentro la cornice (index.html), che tiene audio e schermo intero
+       tra una pagina e l'altra: aperte da sole, ci rientrano con lo stesso indirizzo. -->
+  <script>if (window.top === window) location.replace('/?go=' + encodeURIComponent(location.pathname + location.search + location.hash));</script>
+
+  <!-- Una pagina vecchia rimasta nella cache può chiedere file che con l'aggiornamento non ci sono
+       più (pagina senza stile): in quel caso si ricarica una volta da capo. -->
+  <script>addEventListener('error', function (e) { var t = e.target; if (t && (t.tagName === 'LINK' || t.tagName === 'SCRIPT')) { try { if (sessionStorage.getItem('stale') !== location.pathname) { sessionStorage.setItem('stale', location.pathname); location.reload(); } } catch (x) {} } }, true);</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>Gruppo</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👥</text></svg>" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Learn With Love" />
+  <meta name="theme-color" content="#1b1446" />
+  <link rel="apple-touch-icon" href="/icon-180.png" />
+  <script type="module" crossorigin src="/assets/gruppo-By-rVauR.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/base-CULxe-I3.js">
+  <link rel="modulepreload" crossorigin href="/assets/fullscreen-CSntqjPP.js">
+  <link rel="modulepreload" crossorigin href="/assets/stage-oW7CzKzk.js">
+  <link rel="modulepreload" crossorigin href="/assets/cloud-ILdEVxrx.js">
+  <link rel="modulepreload" crossorigin href="/assets/profiles-DA6_IBi9.js">
+  <link rel="stylesheet" crossorigin href="/assets/base-BV4uEvkl.css">
+  <link rel="stylesheet" crossorigin href="/assets/style-BCWVt5Ro.css">
+  <link rel="stylesheet" crossorigin href="/assets/style-BPv0dMWU.css">
+  <link rel="stylesheet" crossorigin href="/assets/style-CnaNipeS.css">
+</head>
+<body>
+  <main>
+    <div class="mascot-wrap"><div class="mascot-gift" aria-hidden="true">🦄🏆</div></div>
+    <section class="card gift-card" id="group"></section>
+  </main>
+</body>
+</html>
