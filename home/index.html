@@ -54,7 +54,8 @@
     .who { margin-bottom: clamp(14px, 3dvh, 24px); }
     /* Pagina a schermo intero, come un gioco: niente scorrimento; il contenuto sta in mezzo. */
     html, body { height: 100%; overflow: hidden; }
-    body { display: flex; flex-direction: column; height: 100dvh; padding: env(safe-area-inset-top) 0 0; }
+    /* 100svh, non 100dvh: vedi il commento in base.css (body.fit). */
+    body { display: flex; flex-direction: column; height: 100vh; height: 100svh; padding: env(safe-area-inset-top) 0 0; }
     body > main { flex: 1 1 auto; min-height: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     body.staged .app { background: none !important; box-shadow: none !important; }
     .apps { width: 100%; }
@@ -77,15 +78,18 @@
   <meta name="apple-mobile-web-app-title" content="Learn With Love" />
   <meta name="theme-color" content="#1b1446" />
   <link rel="apple-touch-icon" href="/icon-180.png" />
-  <script type="module" crossorigin src="/assets/home-CyAbAEud.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/base-yLrz03pt.js">
+  <script type="module" crossorigin src="/assets/home-BvRTaoDg.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/base-BiAFHE-3.js">
   <link rel="modulepreload" crossorigin href="/assets/fullscreen-CSntqjPP.js">
   <link rel="modulepreload" crossorigin href="/assets/stage-oW7CzKzk.js">
-  <link rel="modulepreload" crossorigin href="/assets/cloud-DGwzG9Up.js">
-  <link rel="modulepreload" crossorigin href="/assets/profiles-B5zkHDIJ.js">
-  <link rel="modulepreload" crossorigin href="/assets/audio-DcZX1KmR.js">
-  <link rel="modulepreload" crossorigin href="/assets/share-DBffJNKw.js">
-  <link rel="stylesheet" crossorigin href="/assets/base-D407lm2d.css">
+  <link rel="modulepreload" crossorigin href="/assets/audio-C5J7Qej8.js">
+  <link rel="modulepreload" crossorigin href="/assets/sfx-C0UI3x48.js">
+  <link rel="modulepreload" crossorigin href="/assets/cloud-DAR9OzEx.js">
+  <link rel="modulepreload" crossorigin href="/assets/preload-helper-ckwbz45p.js">
+  <link rel="modulepreload" crossorigin href="/assets/profiles-BmX-ZY6e.js">
+  <link rel="modulepreload" crossorigin href="/assets/fx-D3kLKamn.js">
+  <link rel="modulepreload" crossorigin href="/assets/share-BgtBif1l.js">
+  <link rel="stylesheet" crossorigin href="/assets/base-D-TuWPMO.css">
 </head>
 <body>
   <main>

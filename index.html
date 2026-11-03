@@ -16,16 +16,24 @@
   <style>
     /* La cornice: tutto lo schermo è la pagina dentro (pagina principale o un gioco). */
     html, body { margin: 0; height: 100%; overflow: hidden; background: #1b1446; }
-    /* Le zone del telefono (tacca, barra in basso) restano fuori: dentro il riquadro non si vedono. */
-    body { box-sizing: border-box; height: 100dvh; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+    /* L'altezza è quella dello schermo *più piccolo* possibile (100svh: con le barre del
+       browser aperte). Con 100dvh la cornice cresce quando le barre si ritirano e, siccome
+       qui non si scorre, la fascia in fondo (il DJ e i comandi dell'arena, per esempio
+       «Alzati») finisce fuori schermo su iPhone e non si può più toccare.
+       100vh resta come ripiego per i browser vecchi che non conoscono svh.
+       Le zone del telefono (tacca, barra in basso) restano fuori: dentro il riquadro non si
+       vedono. Il ritaglio si fa qui e solo qui: dentro un riquadro (iframe)
+       env(safe-area-inset-*) vale sempre zero. */
+    body { box-sizing: border-box; height: 100vh; height: 100svh;
+           padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
     #app { display: block; border: 0; width: 100%; height: 100%; }
   </style>
-  <script type="module" crossorigin src="/assets/main-DfAz99Hw.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/base-yLrz03pt.js">
-  <link rel="modulepreload" crossorigin href="/assets/audio-DcZX1KmR.js">
+  <script type="module" crossorigin src="/assets/main-nIsD3J0K.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/base-BiAFHE-3.js">
+  <link rel="modulepreload" crossorigin href="/assets/audio-C5J7Qej8.js">
   <link rel="modulepreload" crossorigin href="/assets/fullscreen-CSntqjPP.js">
-  <link rel="modulepreload" crossorigin href="/assets/gate-DoI3k8CW.js">
-  <link rel="stylesheet" crossorigin href="/assets/base-D407lm2d.css">
+  <link rel="modulepreload" crossorigin href="/assets/gate-DLMY7jFq.js">
+  <link rel="stylesheet" crossorigin href="/assets/base-D-TuWPMO.css">
 </head>
 <body>
   <!-- La cornice resta aperta per sempre: l'audio (un solo AudioContext, sbloccato una volta)
