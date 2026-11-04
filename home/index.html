@@ -30,6 +30,9 @@
     .who { display: inline-flex; align-items: center; gap: 12px; margin: 0 auto 24px; padding: 8px 10px 8px 8px; border-radius: 999px;
       background: var(--card); color: var(--ink); box-shadow: var(--shadow); font-size: 1.15rem; animation: rise .6s .1s both; }
     .who:empty { display: none; }
+    /* La home si mostra intera quando i dati sono arrivati (main.ts, show): niente pezzi a scatti. */
+    main > * { transition: opacity .25s ease-out; }
+    body.loading main > * { opacity: 0; }
     .hub { display: flex; justify-content: center; gap: clamp(6px, 2vw, 14px); margin: -8px auto clamp(12px, 3dvh, 22px); flex-wrap: wrap; }
     .hub:empty { display: none; }
     .hub-btn { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 68px; padding: 0; border: 0; background: none;
@@ -96,19 +99,19 @@
   <meta name="apple-mobile-web-app-title" content="Learn With Love" />
   <meta name="theme-color" content="#1b1446" />
   <link rel="apple-touch-icon" href="/icon-180.png" />
-  <script type="module" crossorigin src="/assets/home-C7Ag9kjU.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/base-Cv_9K5H_.js">
+  <script type="module" crossorigin src="/assets/home-BmcejnB4.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/base-D1ogZs-M.js">
   <link rel="modulepreload" crossorigin href="/assets/fullscreen-CSntqjPP.js">
   <link rel="modulepreload" crossorigin href="/assets/stage-oW7CzKzk.js">
-  <link rel="modulepreload" crossorigin href="/assets/cloud-CaMfkx0M.js">
+  <link rel="modulepreload" crossorigin href="/assets/cloud-Bk0wxTX4.js">
   <link rel="modulepreload" crossorigin href="/assets/preload-helper-ckwbz45p.js">
   <link rel="modulepreload" crossorigin href="/assets/audio-C5J7Qej8.js">
-  <link rel="modulepreload" crossorigin href="/assets/boards-DHKmnKUz.js">
+  <link rel="modulepreload" crossorigin href="/assets/boards-BlODlf9r.js">
   <link rel="modulepreload" crossorigin href="/assets/fx-D3kLKamn.js">
-  <link rel="modulepreload" crossorigin href="/assets/share-BDQ13YuP.js">
-  <link rel="stylesheet" crossorigin href="/assets/base-DasnrGKG.css">
+  <link rel="modulepreload" crossorigin href="/assets/share-gHI2HEe1.js">
+  <link rel="stylesheet" crossorigin href="/assets/base-FuMtJxcF.css">
 </head>
-<body>
+<body class="loading">
   <main>
     <svg viewBox="0 0 120 110" width="130" height="119" aria-hidden="true"><g stroke="#3b2f5c" stroke-width="3" stroke-linejoin="round">
 <path d="M40 36 Q26 26 24 16 Q36 14 50 30 Z" fill="#fff"/>
