@@ -46,6 +46,12 @@
     .app:active { transform: scale(.94); }
     .app h2 { margin: 0; font-size: 1.05rem; text-shadow: 0 2px 8px rgba(0, 0, 0, .4); }
     .app span { display: none; }
+    /* Il proprio punteggio di oggi sotto la carta del gioco (main.ts, todayChips), nella stessa cella. */
+    .app-cell { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .today-chip { display: inline-flex; flex-direction: column; align-items: center; min-width: 64px; min-height: 44px; padding: 3px 10px;
+      border-radius: 14px; background: rgba(255, 255, 255, .16); color: #fff; text-decoration: none; font-weight: 800; line-height: 1.1; }
+    .today-chip b { font-size: 1.15rem; }
+    .today-chip i { font-style: normal; font-size: .75rem; color: #ffe08a; }
     /* Tutto in uno schermo anche sul telefono: unicorno e titolo si adattano all'altezza. */
     main { padding: clamp(10px, 3dvh, 32px) 16px; }
     main > svg { width: clamp(70px, 14dvh, 130px); height: auto; }
@@ -78,18 +84,18 @@
   <meta name="apple-mobile-web-app-title" content="Learn With Love" />
   <meta name="theme-color" content="#1b1446" />
   <link rel="apple-touch-icon" href="/icon-180.png" />
-  <script type="module" crossorigin src="/assets/home-C42mVkBY.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/base-BbFNytNn.js">
+  <script type="module" crossorigin src="/assets/home-CmH-eL1Y.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/base-Bwwxbrbm.js">
   <link rel="modulepreload" crossorigin href="/assets/fullscreen-CSntqjPP.js">
   <link rel="modulepreload" crossorigin href="/assets/stage-oW7CzKzk.js">
   <link rel="modulepreload" crossorigin href="/assets/audio-C5J7Qej8.js">
   <link rel="modulepreload" crossorigin href="/assets/sfx-C0UI3x48.js">
-  <link rel="modulepreload" crossorigin href="/assets/cloud-NWITk5Y8.js">
+  <link rel="modulepreload" crossorigin href="/assets/cloud-CxgYI5H_.js">
   <link rel="modulepreload" crossorigin href="/assets/preload-helper-ckwbz45p.js">
-  <link rel="modulepreload" crossorigin href="/assets/profiles-ci3DwUxn.js">
+  <link rel="modulepreload" crossorigin href="/assets/profiles-wRtnttMC.js">
   <link rel="modulepreload" crossorigin href="/assets/fx-D3kLKamn.js">
-  <link rel="modulepreload" crossorigin href="/assets/share-Dlz4pRbB.js">
-  <link rel="stylesheet" crossorigin href="/assets/base-DT-jmteF.css">
+  <link rel="modulepreload" crossorigin href="/assets/share-B63s2Lqp.js">
+  <link rel="stylesheet" crossorigin href="/assets/base-DVCEHjII.css">
 </head>
 <body>
   <main>
