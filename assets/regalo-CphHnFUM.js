@@ -1,2 +1,0 @@
-import"./base-CUHWsmzx.js";/* empty css              *//* empty css              */import"./fullscreen-CSntqjPP.js";import{s as a}from"./stage-oW7CzKzk.js";import"./cloud-BHiYM8_Y.js";a("epic");const i=document.getElementById("gift");new URLSearchParams(location.hash.slice(1)).get("a");const e="/tabelline/";i.innerHTML=`<p class="hint">Per ora i regali si mandano solo agli amici, nell'arena: diventate amici toccandovi mentre giocate.</p>
-  <a class="big-btn" href="${e}">Gioca!</a>`;

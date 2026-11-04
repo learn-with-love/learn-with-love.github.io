@@ -72,16 +72,19 @@
     /* Sotto i giochi: chi c'è in arena adesso, e che gli amici si incontrano lì (main.ts, paintLive).
        L'altezza è fissa anche prima del numero, così niente salta quando arriva. */
     .arena-live { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 22px; margin: 4px auto 0;
-      color: #fff; text-decoration: none; font-weight: 700; font-size: .9rem; line-height: 1.2; text-shadow: 0 1px 4px rgba(0, 0, 0, .4); text-align: center; }
+      color: rgba(255, 255, 255, .82); text-decoration: none; font-weight: 700; font-size: .85rem; line-height: 1.2; text-shadow: 0 1px 4px rgba(0, 0, 0, .4); text-align: center; }
     .arena-live b { color: #ffe08a; }
     /* Con appuntamenti o richieste in vista la riga si toglie: lo spazio serve a loro, e il numero resta sull'icona. */
     .arena-live:has(+ .meet-home:not(:empty)) { display: none; }
     /* Quanti sono in arena adesso, sull'icona delle Arene: un pallino verde col numero. */
     .app { position: relative; }
-    .live-badge { position: absolute; top: -4px; right: 6px; display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px 2px 6px;
-      border-radius: 999px; background: #1f8a6e; color: #fff; font-style: normal; font-weight: 800; font-size: .8rem; line-height: 1.2;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .35); }
-    .live-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #9be8cf; }
+    .live-badge { position: absolute; top: -6px; right: 4px; display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px 2px 7px;
+      border-radius: 999px; background: rgba(24, 14, 58, .55); border: 1px solid rgba(255, 255, 255, .22); color: #fff;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); font-style: normal; font-weight: 800; font-size: .78rem; line-height: 1.2;
+      animation: live-in .4s ease both; }
+    .live-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #5ee0b8; box-shadow: 0 0 6px #5ee0b8; animation: breathe 2.4s ease-in-out infinite; }
+    @keyframes breathe { 50% { opacity: .45; } }
+    @keyframes live-in { from { opacity: 0; transform: translateY(4px); } }
     .arena-live .dot { flex: none; width: 9px; height: 9px; border-radius: 50%; background: #3ec5a3; box-shadow: 0 0 0 3px rgba(62, 197, 163, .3); }
     .arena-live .dot.off { background: #8f86a8; box-shadow: none; }
     /* Tutto in uno schermo anche sul telefono: unicorno e titolo si adattano all'altezza. */
@@ -134,16 +137,16 @@
   <meta name="apple-mobile-web-app-title" content="Learn With Love" />
   <meta name="theme-color" content="#1b1446" />
   <link rel="apple-touch-icon" href="/icon-180.png" />
-  <script type="module" crossorigin src="/assets/home-DND4oDmp.js"></script>
+  <script type="module" crossorigin src="/assets/home-BcePH_cu.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/base-CUHWsmzx.js">
   <link rel="modulepreload" crossorigin href="/assets/fullscreen-CSntqjPP.js">
   <link rel="modulepreload" crossorigin href="/assets/stage-oW7CzKzk.js">
-  <link rel="modulepreload" crossorigin href="/assets/cloud-BHiYM8_Y.js">
+  <link rel="modulepreload" crossorigin href="/assets/cloud-ChCb_Rsp.js">
   <link rel="modulepreload" crossorigin href="/assets/preload-helper-ckwbz45p.js">
   <link rel="modulepreload" crossorigin href="/assets/audio-C5J7Qej8.js">
-  <link rel="modulepreload" crossorigin href="/assets/boards-B22BQ_d0.js">
+  <link rel="modulepreload" crossorigin href="/assets/boards-DgxmJEQA.js">
   <link rel="modulepreload" crossorigin href="/assets/fx-D3kLKamn.js">
-  <link rel="modulepreload" crossorigin href="/assets/share-C_tMDU6k.js">
+  <link rel="modulepreload" crossorigin href="/assets/share-CWZcQbs4.js">
   <link rel="stylesheet" crossorigin href="/assets/base-BQKYbi_f.css">
 </head>
 <body class="loading">
