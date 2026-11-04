@@ -30,6 +30,17 @@
     .who { display: inline-flex; align-items: center; gap: 12px; margin: 0 auto 24px; padding: 8px 10px 8px 8px; border-radius: 999px;
       background: var(--card); color: var(--ink); box-shadow: var(--shadow); font-size: 1.15rem; animation: rise .6s .1s both; }
     .who:empty { display: none; }
+    .hub { display: flex; justify-content: center; gap: clamp(6px, 2vw, 14px); margin: -8px auto clamp(12px, 3dvh, 22px); flex-wrap: wrap; }
+    .hub:empty { display: none; }
+    .hub-btn { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 68px; padding: 0; border: 0; background: none;
+      color: #fff; font: inherit; font-size: .85rem; text-decoration: none; cursor: pointer; text-shadow: 0 1px 4px rgba(0,0,0,.35); }
+    .hub-btn b { font-weight: 800; }
+    .hub-btn i { position: absolute; top: -6px; right: 4px; font-style: normal; font-size: .72rem; font-weight: 800; background: #fff; color: var(--grape-deep);
+      border-radius: 999px; padding: 1px 6px; text-shadow: none; }
+    .hub-btn i.hot { background: var(--coral); color: #fff; }
+    .hub-btn:active { transform: scale(.94); }
+    @media (max-width: 420px) { .hub { gap: 4px; flex-wrap: nowrap; } .hub-btn { width: 60px; font-size: .74rem; } }
+    @media (max-height: 720px) { .meet-home { margin-top: 4px; } .who { margin-bottom: 12px; } .hub { margin-bottom: 6px; } .hub-btn .ico { width: 34px; height: 34px; border-radius: 11px; } .hub-btn .ico svg { width: 20px; height: 20px; } }
     .who .big-btn { font-size: 1.5rem; padding: 8px 32px; }
     .who { flex-wrap: wrap; justify-content: center; max-width: 100%; }
     .who:has(.big-btn) { background: none; box-shadow: none; padding: 0; }
@@ -85,16 +96,16 @@
   <meta name="apple-mobile-web-app-title" content="Learn With Love" />
   <meta name="theme-color" content="#1b1446" />
   <link rel="apple-touch-icon" href="/icon-180.png" />
-  <script type="module" crossorigin src="/assets/home-D35d1PtR.js"></script>
+  <script type="module" crossorigin src="/assets/home-C7Ag9kjU.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/base-Cv_9K5H_.js">
   <link rel="modulepreload" crossorigin href="/assets/fullscreen-CSntqjPP.js">
   <link rel="modulepreload" crossorigin href="/assets/stage-oW7CzKzk.js">
-  <link rel="modulepreload" crossorigin href="/assets/cloud-CxepItAD.js">
+  <link rel="modulepreload" crossorigin href="/assets/cloud-CaMfkx0M.js">
   <link rel="modulepreload" crossorigin href="/assets/preload-helper-ckwbz45p.js">
   <link rel="modulepreload" crossorigin href="/assets/audio-C5J7Qej8.js">
-  <link rel="modulepreload" crossorigin href="/assets/boards-mfSTTrWh.js">
+  <link rel="modulepreload" crossorigin href="/assets/boards-DHKmnKUz.js">
   <link rel="modulepreload" crossorigin href="/assets/fx-D3kLKamn.js">
-  <link rel="modulepreload" crossorigin href="/assets/share-BhPdpLlj.js">
+  <link rel="modulepreload" crossorigin href="/assets/share-BDQ13YuP.js">
   <link rel="stylesheet" crossorigin href="/assets/base-DasnrGKG.css">
 </head>
 <body>
@@ -121,6 +132,7 @@
     <h1>Learn With Love</h1>
     <p class="sub">Giochi per imparare, semplici e divertenti</p>
     <div id="who" class="who"></div>
+    <nav id="hub" class="hub" aria-label="Le tue cose"></nav>
     <div class="apps">
       <a class="app" href="/tabelline/" data-page="tabelline/">
         <svg viewBox="0 0 100 100" aria-hidden="true">
