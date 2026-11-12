@@ -101,7 +101,10 @@
     body.staged .app { background: none !important; box-shadow: none !important; }
     .apps { width: 100%; }
     @media (max-width: 480px) {
-      .who { gap: 6px; font-size: 1rem; padding: 6px 8px 6px 6px; flex-wrap: nowrap; }
+      /* Con Profilo, Avvisi, Installa e Cambia insieme una riga sola esce dallo schermo: si va a capo,
+         e la pillola diventa un riquadro arrotondato. Il nome resta su una riga. */
+      .who { gap: 6px; font-size: 1rem; padding: 6px 8px 6px 6px; flex-wrap: wrap; border-radius: 28px; max-width: calc(100% - 32px); }
+      .who > span { white-space: nowrap; }
       .who svg { width: 40px; height: 40px; }
       .who .pill-btn { padding: 6px 10px; font-size: .95rem; }
     }
